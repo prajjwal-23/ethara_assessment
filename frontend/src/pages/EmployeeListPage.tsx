@@ -29,8 +29,8 @@ export default function EmployeeListPage() {
         setError('');
         try {
             const res = await getEmployees();
-            setEmployees(res.data);
-            setFiltered(res.data);
+            setEmployees(res.data || []);
+            setFiltered(res.data || []);
         } catch {
             setError('Failed to load employees.');
         } finally {

@@ -44,8 +44,8 @@ export default function AttendancePage() {
                 getEmployees(),
                 getAllAttendance(),
             ]);
-            setEmployees(empRes.data);
-            setRecords(attRes.data);
+            setEmployees(empRes.data || []);
+            setRecords(attRes.data || []);
         } catch {
             setError('Failed to load data.');
         } finally {
@@ -166,8 +166,8 @@ export default function AttendancePage() {
                                                 setFormErrors((prev) => ({ ...prev, employee_id: '' }));
                                         }}
                                         className={`w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 transition-smooth appearance-none bg-white ${formErrors.employee_id
-                                                ? 'border-red-300 focus:ring-red-500/20'
-                                                : 'border-slate-200 focus:ring-indigo-500/20 focus:border-indigo-400'
+                                            ? 'border-red-300 focus:ring-red-500/20'
+                                            : 'border-slate-200 focus:ring-indigo-500/20 focus:border-indigo-400'
                                             }`}
                                     >
                                         <option value="">Select employee</option>
@@ -200,8 +200,8 @@ export default function AttendancePage() {
                                                 setFormErrors((prev) => ({ ...prev, date: '' }));
                                         }}
                                         className={`w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 transition-smooth ${formErrors.date
-                                                ? 'border-red-300 focus:ring-red-500/20'
-                                                : 'border-slate-200 focus:ring-indigo-500/20 focus:border-indigo-400'
+                                            ? 'border-red-300 focus:ring-red-500/20'
+                                            : 'border-slate-200 focus:ring-indigo-500/20 focus:border-indigo-400'
                                             }`}
                                     />
                                     {formErrors.date && (
@@ -221,10 +221,10 @@ export default function AttendancePage() {
                                                 key={s}
                                                 onClick={() => setForm((prev) => ({ ...prev, status: s }))}
                                                 className={`flex-1 py-2.5 text-sm font-medium rounded-xl border transition-smooth ${form.status === s
-                                                        ? s === 'Present'
-                                                            ? 'bg-emerald-50 border-emerald-300 text-emerald-700'
-                                                            : 'bg-red-50 border-red-300 text-red-700'
-                                                        : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
+                                                    ? s === 'Present'
+                                                        ? 'bg-emerald-50 border-emerald-300 text-emerald-700'
+                                                        : 'bg-red-50 border-red-300 text-red-700'
+                                                    : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
                                                     }`}
                                             >
                                                 {s}

@@ -51,8 +51,8 @@ export default function DashboardPage() {
                 getEmployees(),
                 getAllAttendance(),
             ]);
-            setEmployees(empRes.data);
-            setAttendance(attRes.data);
+            setEmployees(empRes.data || []);
+            setAttendance(attRes.data || []);
         } catch {
             setError('Failed to load dashboard data.');
         } finally {
